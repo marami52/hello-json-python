@@ -6,4 +6,4 @@ functions:
   hellojson:
     lang: golang-http
     handler: ./hellojson
-    image: marami52/hellojson:latest
+    image: hellojson:latest
