@@ -14,6 +14,6 @@ func Handle(req handler.Request) (handler.Response, error) {
 	message := fmt.Sprintf("Hello world round 1, input was: %s", string(req.Body))
 
 	return handler.Response{
-		Body:       []byte(message),
-    }, err
+		Body: []byte(message),
+	}, err
 }
