@@ -2,7 +2,6 @@ package function
 
 import (
 	"fmt"
-	"net/http"
 
 	"github.com/openfaas-incubator/go-function-sdk"
 )
