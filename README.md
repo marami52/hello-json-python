@@ -1,0 +1,1 @@
+# openfaas-new-template
