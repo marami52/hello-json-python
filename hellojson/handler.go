@@ -1,18 +1,50 @@
 package function
 
 import (
+	"encoding/json"
 	"fmt"
-
-	"github.com/openfaas-incubator/go-function-sdk"
+	"io/ioutil"
+	"net/http"
+	"os"
 )
 
-// Handle a function invocation
-func Handle(req handler.Request) (handler.Response, error) {
-	var err error
+func Handle(w http.ResponseWriter, r *http.Request) {
+	var input []byte
 
-	message := fmt.Sprintf("Hello world round 1, input was: %s", string(req.Body))
+	if r.Body != nil {
+		defer r.Body.Close()
 
-	return handler.Response{
-		Body: []byte(message),
-	}, err
+		// read request payload
+		reqBody, err := ioutil.ReadAll(r.Body)
+
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+
+			input = reqBody
+		}
+	}
+
+	// log to stdout
+	fmt.Printf("request body: %s", string(input))
+
+	response := struct {
+		Payload     string              `json:"payload"`
+		Headers     map[string][]string `json:"headers"`
+		Environment []string            `json:"environment"`
+	}{
+		Payload:     string(input),
+		Headers:     r.Header,
+		Environment: os.Environ(),
+	}
+
+	resBody, err := json.Marshal(response)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// write result
+	w.WriteHeader(http.StatusOK)
+	w.Write(resBody)
 }
