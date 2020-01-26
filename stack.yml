@@ -9,15 +9,4 @@ functions:
     image: hello-json:latest
     environment:
       write_debug: true
-  hello-json1:
-    lang: python3
-    handler: ./hello-json
-    image: hello-json:latest
-    environment:
-      write_debug: true
-  hello-json2:
-    lang: python3
-    handler: ./hello-json
-    image: hello-json:latest
-    environment:
-      write_debug: true
+
