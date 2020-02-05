@@ -4,7 +4,8 @@ import requests
 
 def handle(req):
     headers = {}
-    request = requests.Request('GET', 'http://gateway.openfaas:8080/function/list-functions/?user=marami52', headers=headers)
+    # request = requests.Request('GET', 'http://gateway.openfaas:8080/function/list-functions/?user=marami52', headers=headers)
+    request = requests.Request('GET', 'http://gateway11.axcel.r-brain.io/function/list-functions/?user=marami52', headers=headers)
     prepped = request.prepare()
     with requests.Session() as session:
         response = session.send(prepped)
