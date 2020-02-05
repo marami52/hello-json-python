@@ -10,4 +10,4 @@ def handle(req):
         response = session.send(prepped)
     userInput = req
     return response.text
-    #return json.dumps({"Chakeram ostad! baba ... ": userInput})
+    #return json.dumps({"Chakeram ostad! 11baba ... ": userInput})
