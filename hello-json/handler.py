@@ -1,6 +1,13 @@
 import sys
 import json
+import requests
 
 def handle(req):
+    headers = {}
+    request = requests.Request('GET', 'http://gateway.openfaas:8080/function/list-functions/?user=', headers=headers)
+    prepped = request.prepare()
+    with requests.Session() as session:
+        response = session.send(prepped)
     userInput = req
-    return json.dumps({"Chakeram ostad! baba ... ": userInput})
+    return response.text
+    #return json.dumps({"Chakeram ostad! baba ... ": userInput})
