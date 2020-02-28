@@ -9,7 +9,7 @@ functions:
     image: hello-json:latest
     labels:
       com.openfaas.scale.min: "1"
-      com.openfaas.scale.zero: true
+      com.openfaas.scale.zero: false
     environment:
       write_debug: true
 
