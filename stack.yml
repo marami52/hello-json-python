@@ -12,4 +12,7 @@ functions:
       com.openfaas.scale.zero: false
     environment:
       write_debug: true
+      read_timeout: "60s"
+      write_timeout: "60s"
+      exec_timeout: "60s"
 
