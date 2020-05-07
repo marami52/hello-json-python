@@ -4,5 +4,5 @@ import os
 
 def handle(event, context):
     userInput = event.body
-    username = event.headers
-    return json.dumps({str(username)})
+    username = event.headers['X_Consumer_Username']
+    return json.dumps({"abc" : str(username)})
