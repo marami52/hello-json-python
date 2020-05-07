@@ -2,8 +2,8 @@ import sys
 import json
 import os
 
-def handle(req):
-    userInput = req
-    a = os.environ
-    return str(type(req))
+def handle(event, context):
+    userInput = str(event.body)
+    username = event.headers['Http_X_Consumer_Username']
+    return username
     #return json.dumps({"Chakeram ostad! 18 baba ... ": str(req)})
