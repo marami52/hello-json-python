@@ -4,6 +4,6 @@ import os
 
 def handle(event, context):
     userInput = str(event.body)
-    username = event.headers['Http_X_Consumer_Username']
+    username = event.headers
     return userInput
     #return json.dumps({"Chakeram ostad! 18 baba ... ": str(req)})
