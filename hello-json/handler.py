@@ -5,4 +5,10 @@ import os
 def handle(event, context):
     userInput = event.body
     username = event.headers['X_Consumer_Username']
-    return json.dumps({"abc" : str(username)})
+    
+    return {
+        "statusCode": 200,
+        "body": {
+            "content-type-received": str(username)
+        }
+    }
