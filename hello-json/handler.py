@@ -3,11 +3,12 @@ import json
 import os
 
 def handle(event, context):
-    userInput = str(event.body)
+    userInput = event.body
     username = event.headers
     return {
         "statusCode": 200,
         "body": {
-            "heshmat": userInput
+            "heshmat" : userInput,
+            "headers" : str(username)
         }
     }
