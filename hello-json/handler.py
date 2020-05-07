@@ -5,5 +5,9 @@ import os
 def handle(event, context):
     userInput = str(event.body)
     username = event.headers
-    return userInput
-    #return json.dumps({"Chakeram ostad! 18 baba ... ": str(req)})
+    return {
+        "statusCode": 200,
+        "body": {
+            "heshmat": userInput
+        }
+    }
